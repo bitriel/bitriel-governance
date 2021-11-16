@@ -22,6 +22,7 @@ export type { ERC165 } from "./ERC165";
 export type { IERC165 } from "./IERC165";
 export type { BitrielGovernance } from "./BitrielGovernance";
 export type { BitrielToken } from "./BitrielToken";
+export type { IBitrielToken } from "./IBitrielToken";
 export type { TimeLock } from "./TimeLock";
 
 export { AccessControl__factory } from "./factories/AccessControl__factory";
@@ -45,4 +46,5 @@ export { ERC165__factory } from "./factories/ERC165__factory";
 export { IERC165__factory } from "./factories/IERC165__factory";
 export { BitrielGovernance__factory } from "./factories/BitrielGovernance__factory";
 export { BitrielToken__factory } from "./factories/BitrielToken__factory";
+export { IBitrielToken__factory } from "./factories/IBitrielToken__factory";
 export { TimeLock__factory } from "./factories/TimeLock__factory";

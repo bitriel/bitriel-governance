@@ -97,6 +97,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.BitrielToken__factory>;
     getContractFactory(
+      name: "IBitrielToken",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IBitrielToken__factory>;
+    getContractFactory(
       name: "TimeLock",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TimeLock__factory>;
@@ -206,6 +210,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.BitrielToken>;
+    getContractAt(
+      name: "IBitrielToken",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IBitrielToken>;
     getContractAt(
       name: "TimeLock",
       address: string,

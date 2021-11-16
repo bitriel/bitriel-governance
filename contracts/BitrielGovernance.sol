@@ -11,7 +11,7 @@ contract BitrielGovernance is Governor, GovernorCountingSimple, GovernorVotes, G
   constructor(ERC20Votes _token, TimelockController _timelock)
     Governor("BitrielGovernance")
     GovernorVotes(_token)
-    GovernorVotesQuorumFraction(80)
+    GovernorVotesQuorumFraction(4)
     GovernorTimelockControl(_timelock)
   {}
 
