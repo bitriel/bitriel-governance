@@ -1,6 +1,6 @@
 {
   "name": "@bitriel/governance",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "description": "On-chain DAO governance for Bitriel Protocol",
   "homepage": "https://dapp.bitriel.com/dao",

@@ -76,13 +76,12 @@ const config: HardhatUserConfig = {
       saveDeployments: true,
     },
     "bsc-testnet": {
-      url: "https://data-seed-prebsc-2-s3.binance.org:8545",
+      url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       accounts,
       chainId: 97,
       live: true,
       saveDeployments: true,
       tags: ["staging"],
-      gasMultiplier: 2,
     },
     "selendra-testnet": {
       url: "https://rpc.testnet.selendra.org",
