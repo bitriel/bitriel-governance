@@ -35,9 +35,11 @@ interface GovernorTimelockControlInterface extends ethers.utils.Interface {
     "proposalDeadline(uint256)": FunctionFragment;
     "proposalEta(uint256)": FunctionFragment;
     "proposalSnapshot(uint256)": FunctionFragment;
+    "proposalThreshold()": FunctionFragment;
     "propose(address[],uint256[],bytes[],string)": FunctionFragment;
     "queue(address[],uint256[],bytes[],bytes32)": FunctionFragment;
     "quorum(uint256)": FunctionFragment;
+    "relay(address,uint256,bytes)": FunctionFragment;
     "state(uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "timelock()": FunctionFragment;
@@ -97,6 +99,10 @@ interface GovernorTimelockControlInterface extends ethers.utils.Interface {
     values: [BigNumberish]
   ): string;
   encodeFunctionData(
+    functionFragment: "proposalThreshold",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "propose",
     values: [string[], BigNumberish[], BytesLike[], string]
   ): string;
@@ -107,6 +113,10 @@ interface GovernorTimelockControlInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "quorum",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "relay",
+    values: [string, BigNumberish, BytesLike]
   ): string;
   encodeFunctionData(functionFragment: "state", values: [BigNumberish]): string;
   encodeFunctionData(
@@ -165,9 +175,14 @@ interface GovernorTimelockControlInterface extends ethers.utils.Interface {
     functionFragment: "proposalSnapshot",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "proposalThreshold",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "propose", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "queue", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "quorum", data: BytesLike): Result;
+  decodeFunctionResult(functionFragment: "relay", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "state", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "supportsInterface",
@@ -370,6 +385,8 @@ export class GovernorTimelockControl extends BaseContract {
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
 
+    proposalThreshold(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     propose(
       targets: string[],
       values: BigNumberish[],
@@ -390,6 +407,13 @@ export class GovernorTimelockControl extends BaseContract {
       blockNumber: BigNumberish,
       overrides?: CallOverrides
     ): Promise<[BigNumber]>;
+
+    relay(
+      target: string,
+      value: BigNumberish,
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
+    ): Promise<ContractTransaction>;
 
     state(
       proposalId: BigNumberish,
@@ -486,6 +510,8 @@ export class GovernorTimelockControl extends BaseContract {
     overrides?: CallOverrides
   ): Promise<BigNumber>;
 
+  proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
+
   propose(
     targets: string[],
     values: BigNumberish[],
@@ -506,6 +532,13 @@ export class GovernorTimelockControl extends BaseContract {
     blockNumber: BigNumberish,
     overrides?: CallOverrides
   ): Promise<BigNumber>;
+
+  relay(
+    target: string,
+    value: BigNumberish,
+    data: BytesLike,
+    overrides?: Overrides & { from?: string | Promise<string> }
+  ): Promise<ContractTransaction>;
 
   state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
@@ -599,6 +632,8 @@ export class GovernorTimelockControl extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
+
     propose(
       targets: string[],
       values: BigNumberish[],
@@ -619,6 +654,13 @@ export class GovernorTimelockControl extends BaseContract {
       blockNumber: BigNumberish,
       overrides?: CallOverrides
     ): Promise<BigNumber>;
+
+    relay(
+      target: string,
+      value: BigNumberish,
+      data: BytesLike,
+      overrides?: CallOverrides
+    ): Promise<void>;
 
     state(proposalId: BigNumberish, overrides?: CallOverrides): Promise<number>;
 
@@ -867,6 +909,8 @@ export class GovernorTimelockControl extends BaseContract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    proposalThreshold(overrides?: CallOverrides): Promise<BigNumber>;
+
     propose(
       targets: string[],
       values: BigNumberish[],
@@ -886,6 +930,13 @@ export class GovernorTimelockControl extends BaseContract {
     quorum(
       blockNumber: BigNumberish,
       overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
+    relay(
+      target: string,
+      value: BigNumberish,
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
     state(
@@ -984,6 +1035,8 @@ export class GovernorTimelockControl extends BaseContract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    proposalThreshold(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     propose(
       targets: string[],
       values: BigNumberish[],
@@ -1003,6 +1056,13 @@ export class GovernorTimelockControl extends BaseContract {
     quorum(
       blockNumber: BigNumberish,
       overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    relay(
+      target: string,
+      value: BigNumberish,
+      data: BytesLike,
+      overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
     state(

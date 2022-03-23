@@ -25,9 +25,17 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.Ownable__factory>;
     getContractFactory(
-      name: "GovernorCountingSimple",
+      name: "GovernorCompatibilityBravo",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.GovernorCountingSimple__factory>;
+    ): Promise<Contracts.GovernorCompatibilityBravo__factory>;
+    getContractFactory(
+      name: "IGovernorCompatibilityBravo",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IGovernorCompatibilityBravo__factory>;
+    getContractFactory(
+      name: "GovernorSettings",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.GovernorSettings__factory>;
     getContractFactory(
       name: "GovernorTimelockControl",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -56,6 +64,10 @@ declare module "hardhat/types/runtime" {
       name: "TimelockController",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.TimelockController__factory>;
+    getContractFactory(
+      name: "IVotes",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.IVotes__factory>;
     getContractFactory(
       name: "ERC20",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -89,9 +101,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC165__factory>;
     getContractFactory(
-      name: "BitrielGovernance",
+      name: "BitrielGovernor",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.BitrielGovernance__factory>;
+    ): Promise<Contracts.BitrielGovernor__factory>;
     getContractFactory(
       name: "BitrielToken",
       signerOrOptions?: ethers.Signer | FactoryOptions
@@ -117,10 +129,20 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.Ownable>;
     getContractAt(
-      name: "GovernorCountingSimple",
+      name: "GovernorCompatibilityBravo",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.GovernorCountingSimple>;
+    ): Promise<Contracts.GovernorCompatibilityBravo>;
+    getContractAt(
+      name: "IGovernorCompatibilityBravo",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IGovernorCompatibilityBravo>;
+    getContractAt(
+      name: "GovernorSettings",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.GovernorSettings>;
     getContractAt(
       name: "GovernorTimelockControl",
       address: string,
@@ -156,6 +178,11 @@ declare module "hardhat/types/runtime" {
       address: string,
       signer?: ethers.Signer
     ): Promise<Contracts.TimelockController>;
+    getContractAt(
+      name: "IVotes",
+      address: string,
+      signer?: ethers.Signer
+    ): Promise<Contracts.IVotes>;
     getContractAt(
       name: "ERC20",
       address: string,
@@ -197,10 +224,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC165>;
     getContractAt(
-      name: "BitrielGovernance",
+      name: "BitrielGovernor",
       address: string,
       signer?: ethers.Signer
-    ): Promise<Contracts.BitrielGovernance>;
+    ): Promise<Contracts.BitrielGovernor>;
     getContractAt(
       name: "BitrielToken",
       address: string,
