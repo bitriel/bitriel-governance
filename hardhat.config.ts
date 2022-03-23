@@ -83,14 +83,12 @@ const config: HardhatUserConfig = {
       saveDeployments: true,
       tags: ["staging"],
     },
-    "selendra-testnet": {
-      url: "https://rpc.testnet.selendra.org",
+    "indra-test": {
+      url: "https://indranet-rpc.selendra.org/",
       accounts,
-      chainId: 2000,
+      chainId: 222,
       live: true,
       saveDeployments: true,
-      tags: ["staging"],
-      gasMultiplier: 2,
     },
   },
   gasReporter: {
