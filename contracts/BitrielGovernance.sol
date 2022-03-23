@@ -20,6 +20,9 @@ contract BitrielGovernor is Governor, GovernorSettings, GovernorCompatibilityBra
     /// @notice The total number of proposals
     uint public proposalCount;
 
+    /// @notice The latest proposal for each proposer
+    mapping (address => uint) public latestProposalIds;
+
     // The following functions are overrides required by Solidity.
 
     function votingDelay()
@@ -73,6 +76,7 @@ contract BitrielGovernor is Governor, GovernorSettings, GovernorCompatibilityBra
         returns (uint256)
     {
         proposalCount++;
+        latestProposalIds[msg.sender] = proposalCount;
         return super.propose(targets, values, calldatas, description);
     }
 
